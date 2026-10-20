@@ -54,7 +54,7 @@ async function runLiveWalkthrough() {
       headers: { authorization: `Bearer ${tokens[acct.email]}` },
     });
     assert.strictEqual(meRes.status, 200);
-    console.log(`  ✓ ${acct.email} successfully logged in as "${meRes.data.display_name}" (Memberships: ${meRes.data.memberships.length})`);
+    console.log(`  ✓ ${acct.email} successfully logged in as "${meRes.data.user?.display_name}" (Memberships: ${meRes.data.memberships.length})`);
   }
 
   console.log('\n=== Step 2: Testing Dashboard Loading for Demo Accounts ===');
