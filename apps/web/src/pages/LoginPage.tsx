@@ -137,10 +137,7 @@ export const LoginPage: React.FC = () => {
         </form>
 
         <div style={{ marginTop: '24px', paddingTop: '16px', borderTop: '1px solid var(--color-border)' }}>
-          <div style={{ fontSize: '11px', color: 'var(--color-text-muted)', marginBottom: '8px', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
-            Quick-fill Demo Accounts (password: Passw0rd!demo or password123)
-          </div>
-          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px' }}>
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
             <button
               type="button"
               className="btn btn-secondary"
