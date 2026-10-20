@@ -14,6 +14,7 @@ compliance requests, operational tasks) across teams, with reliable ownership, a
 
 [![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/alfeenafsal11/Newtonite)
 
+- **Live Deployed URL:** [https://opsflow-app-9h8g.onrender.com](https://opsflow-app-9h8g.onrender.com)
 - **GitHub Repository:** [https://github.com/alfeenafsal11/Newtonite](https://github.com/alfeenafsal11/Newtonite)
 - **One-Click Deployment:** Click the Deploy to Render button above, or import the repository in Render to launch the web service and PostgreSQL database automatically via [render.yaml](file:///d:/PROJECTS/Newtonite/render.yaml).
 - **Demo Credentials:** Pre-seeded accounts (e.g., `admin@opsflow.test`, `support.lead@opsflow.test`, `pay.approver@opsflow.test`) with password `password123` or `Passw0rd!demo`.

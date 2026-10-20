@@ -1,6 +1,7 @@
 import assert from 'node:assert';
 
-const API_BASE = 'http://localhost:3000/api/v1';
+const API_BASE = process.env.TEST_API_URL || 'http://localhost:3000/api/v1';
+console.log('Target API_BASE:', API_BASE);
 
 const DEMO_ACCOUNTS = [
   { email: 'admin@example.com', password: 'Passw0rd!demo', role: 'admin' },

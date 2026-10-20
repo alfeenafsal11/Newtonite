@@ -1,10 +1,14 @@
 import { loadConfig } from './config.js';
 import { getPool, closePool } from './db/pool.js';
 import { buildApp } from './app.js';
+import { bootstrapDatabase } from './db/bootstrap.js';
 
 async function main() {
   const config = loadConfig();
   getPool();
+
+  // Automatically migrate schema, seed demo accounts if empty, and start worker
+  await bootstrapDatabase(config);
 
   const app = buildApp();
 
