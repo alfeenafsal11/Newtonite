@@ -1,0 +1,31 @@
+services:
+  postgres:
+    image: postgres:16.6-alpine
+    environment:
+      POSTGRES_USER: opsflow
+      POSTGRES_PASSWORD: opsflow
+      POSTGRES_DB: opsflow
+    ports: ["5432:5432"]
+    volumes: ["pgdata:/var/lib/postgresql/data"]
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U opsflow -d opsflow"]
+      interval: 3s
+      timeout: 3s
+      retries: 20
+  api:
+    profiles: ["app"]
+    build: .
+    command: sh -c "npm run migrate && node apps/api/dist/server.js"
+    env_file: .env
+    environment: { DATABASE_URL: "postgres://opsflow:opsflow@postgres:5432/opsflow", API_PORT: "3000" }
+    depends_on: { postgres: { condition: service_healthy } }
+    ports: ["3000:3000"]
+  worker:
+    profiles: ["app"]
+    build: .
+    command: node apps/api/dist/worker/main.js
+    env_file: .env
+    environment: { DATABASE_URL: "postgres://opsflow:opsflow@postgres:5432/opsflow" }
+    depends_on: { postgres: { condition: service_healthy } }
+volumes:
+  pgdata:

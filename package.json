@@ -1,0 +1,37 @@
+{
+  "name": "opsflow",
+  "version": "1.0.0",
+  "private": true,
+  "workspaces": [
+    "apps/api",
+    "apps/web"
+  ],
+  "engines": {
+    "node": ">=22.12.0 <23"
+  },
+  "type": "module",
+  "scripts": {
+    "dev": "concurrently -n api,worker,web \"npm:dev:api\" \"npm:dev:worker\" \"npm:dev:web\"",
+    "dev:api": "npm -w apps/api run dev",
+    "dev:worker": "npm -w apps/api run dev:worker",
+    "dev:web": "npm -w apps/web run dev",
+    "migrate": "npm -w apps/api run migrate",
+    "seed": "tsx --env-file=.env scripts/seed.ts",
+    "seed:load": "tsx --env-file=.env scripts/seed-load.ts",
+    "build": "npm -w apps/web run build && npm -w apps/api run build",
+    "test": "npm run test:api && npm run test:web",
+    "test:api": "npm -w apps/api run test",
+    "test:web": "npm -w apps/web run test",
+    "lint": "eslint .",
+    "typecheck": "npm -w apps/api run typecheck && npm -w apps/web run typecheck"
+  },
+  "devDependencies": {
+    "concurrently": "9.1.0",
+    "dotenv": "16.4.5",
+    "eslint": "9.15.0",
+    "prettier": "3.4.1",
+    "tsx": "4.19.2",
+    "typescript": "5.6.3",
+    "typescript-eslint": "8.16.0"
+  }
+}
