@@ -5,3 +5,4 @@ pgdata
 *.log
 coverage
 .DS_Store
+*.zip

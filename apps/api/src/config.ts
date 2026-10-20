@@ -5,7 +5,7 @@ const configSchema = z.object({
   DATABASE_URL_TEST: z.string().optional(),
   JWT_SECRET: z.string().min(32, 'JWT_SECRET must be at least 32 characters'),
   JWT_TTL_HOURS: z.coerce.number().default(8),
-  API_PORT: z.coerce.number().default(3000),
+  API_PORT: z.preprocess((val) => val ?? process.env.PORT, z.coerce.number().default(3000)),
   WEB_ORIGIN: z.string().default('http://localhost:5173'),
   LOG_LEVEL: z.string().default('info'),
   PG_POOL_MAX: z.coerce.number().default(20),
